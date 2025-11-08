@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="LoginCss/img/subhart-png.png">
+    <title>Student Login | Subharti University</title>
+    <!-- Bootstrap core CSS -->
+    <link href="LoginCss/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="LoginCss/css/login.css" rel="stylesheet">
+    <link href="LoginCss/css/animate-custom.css" rel="stylesheet">
+    <script type="text/javascript">
+        history.pushState(null, null, 'stdlogin.html');
+        window.AddEventListener('popstate', function (event) {
+            history.pushState(null, null, 'stdlogin.html');
+        });
+    </script>
+    <style>
+        *
+        {
+            box-sizing: border-box;
+        }
+        .video-background
+        {
+            background: #000;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0; /* z-index: -99;*/
+        }
+        .video-foreground, .video-background iframe
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        #vidtop-content
+        {
+            top: 0;
+            color: #fff;
+        }
+        .vid-info
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 33%;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            padding: 1rem;
+            font-family: Avenir, Helvetica, sans-serif;
+        }
+        .vid-info h1
+        {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+        .vid-info a
+        {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(0,0,0,0.5);
+            transition: .6s background;
+            border-bottom: none;
+            margin: 1rem auto;
+            text-align: center;
+        }
+        @media (min-aspect-ratio: 16/9)
+        {
+            .video-foreground
+            {
+                height: 300%;
+                top: -100%;
+            }
+        }
+        @media (max-aspect-ratio: 16/9)
+        {
+            .video-foreground
+            {
+                width: 300%;
+                left: -100%;
+            }
+        }
+        @media all and (max-width: 600px)
+        {
+            .vid-info
+            {
+                width: 50%;
+                padding: .5rem;
+            }
+            .vid-info h1
+            {
+                margin-bottom: .2rem;
+            }
+        }
+        @media all and (max-width: 500px)
+        {
+            .vid-info .acronym
+            {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <div class="video-foreground">
+              
+              
+       <video preload="preload" id="myVideo11" class="video-foreground" autoplay="autoplay" loop="loop">  
+             <source  src="loginVideo2.mp4" type="video/mp4"></source>
+               <source  src="loginVideo1.mp4" type="video/mp4"></source>
+            </video>
+        </div>
+    </div>
+    <!-- start Login box -->
+    <div class="container" id="login-block">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div class="login-box clearfix animated flipInY">
+                    <h3 class="animated bounceInDown" style="font-size: 24px; color: #000000; font-weight: 800;
+                        text-shadow: 1px 2px 0px #fff, 1px 4px 0px rgba(0,0,0,0.15);margin-top: 10px;">
+                        Swami Vivekanand</h3>
+                    <h3 class="animated bounceInDown" style="font-size: 30px; color: #000000; font-weight: 800;
+                        text-shadow: 1px 2px 0px #fff, 1px 4px 0px rgba(0,0,0,0.15);margin-top: 10px;">
+                        Subharti University</h3>
+                    <h3 class="animated bounceInDown" style="font-size: 20px; color: #000000; font-weight: 800;
+                        text-shadow: 1px 2px 0px #fff, 1px 4px 0px rgba(0,0,0,0.15);margin-top: 10px;">
+                        Student Login</h3>
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="LoginCss/img/subhart-png.png" alt="Subharti Infotech" style="width: 80px" /></a>
+                    </div>
+                    <hr />
+                    <div>
+                          <form method="post" action="javascript:void(0);" id="form" onsubmit="validateLogin()">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQzMTQ4NDgwOGRklwP7MAIQdZv/fIiEVd/21yMHAGEh4T8T4/+eMqTP+l4=" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6B6E290B" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAdWdR+WITSFJiz5TdJQSuXsS0RaPtk1SOOEvPmZY9hXCykrUsLHhimgLBKC2hCyQhM+9QiQE2MDzqS6Irn2W1+f8RS22m14wsypFtp/hwI9XQ9PSmWJ/Dfq4IC1PCatUxRooJj/CxR099YHehp0+dkW2lVT5A1mhFEhrdftFsMM0RmOutLmOIbCJbVNvITHp4g=" /> 
+                           <div class="col-md-12" style="font-size: 12px;font-weight: 900;color: #8779d4;">Select Login Option</div>
+                            <div class="col-md-12">
+                        <select name="ddlloginType" id="ddlloginType" class="form-control">
+	<option value="---Select---">---Select---</option>
+	<option value="Student ID">Student ID</option>
+	<option value="Enrollment No">Enrollment No</option>
+
+</select>
+                        </div>
+                           <div class="col-md-12">                  
+                        <input name="txtuserid" type="text" maxlength="14" id="txtuserid" autocomplete="off" class="form-control" onkeypress="if(event.keyCode<48 || event.keyCode>57)event.returnValue=false;" placeholder="Enter Student ID/Enrollment No" />
+                            </div>
+                               <div class="col-md-12">
+                        <input name="txtpass" type="password" id="txtpass" autocomplete="off" class="form-control" placeholder="Enter Date of Birth:DDMMYYYY" />
+                            </div>
+                        <input type="submit" name="Btnlogin" value="Sign In" id="Btnlogin" class="btn btn-red" />
+                         <center><a href="index.html" style="font-weight: 900;">Switch User</a></center>
+                        </form>
+                    </div>
+                </div>
+                 <footer class="container" style="margin-top: 15px;text-align: center;">
+     		<p><small style="background-color:#333333;padding:5px;font-size:16px;font-weight:700;color: white;">Copyright © 2017 <a href="http://subharti.org/it/" target="_blank" style="color: white;">Subharti Infotech</a></small></p>
+     	</footer>
+            </div>
+           
+        </div>
+    </div>
+   <script src="LoginCss/js/jquery-1.9.1.min.js"></script>
+    <script src="LoginCss/js/bootstrap.min.js"></script>
+    <script src="LoginCss/js/placeholder-shim.min.js"></script>
+    <script src="LoginCss/js/custom.js"></script>
+    <script>
+        function validateLogin() {
+            var userId = document.getElementById('txtuserid').value;
+            var password = document.getElementById('txtpass').value;
+            var loginType = document.getElementById('ddlloginType').value;
+            
+            // Check if all fields are filled
+            if (loginType === '---Select---') {
+                alert('Please select a login option');
+                return false;
+            }
+            
+            if (!userId) {
+                alert('Please enter Student ID/Enrollment No');
+                return false;
+            }
+            
+            if (!password) {
+                alert('Please enter Date of Birth');
+                return false;
+            }
+            
+            // Check credentials for Arjun Singh
+            if (userId === '2209000000183' && password === '23042005') {
+                // Redirect to student dashboard
+                window.location.href = 'student-dashboard.html';
+                return false;
+            } else {
+                alert('Invalid credentials. Please check your Student ID/Enrollment No and Date of Birth.');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

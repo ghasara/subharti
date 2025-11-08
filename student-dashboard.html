@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="LoginCss/img/subhart-png.png">
+    <title>Student Dashboard | Subharti University</title>
+    <!-- Bootstrap core CSS -->
+    <link href="LoginCss/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+        .header {
+            background: #4a5568;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            margin: 0;
+            padding: 0 20px;
+            width: 100%;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        .logout-btn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            font-size: 14px;
+            margin-left: auto;
+        }
+        .profile-section {
+            background: white;
+            margin: 20px auto;
+            /* max-width: 900px; */
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .profile-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .student-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        .student-details {
+            color: #718096;
+            margin: 3px 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-tabs {
+            background: #f8f9fa;
+            border-bottom: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav-tabs .nav-item {
+            flex: 1;
+        }
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 0;
+            color: #6c757d;
+            font-weight: 600;
+            padding: 18px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .nav-tabs .nav-link.active {
+            background: white;
+            color: #4a5568;
+            border-bottom: 4px solid #667eea;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            padding: 25px;
+            min-height: 400px;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.show.active {
+            display: block !important;
+        }
+        .info-table {
+            width: 100%;
+            margin-bottom: 0;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .info-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .info-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+        .info-table td:first-child {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            font-weight: 600;
+            color: #4a5568;
+            width: 40%;
+            font-size: 14px;
+        }
+        .info-table td:last-child {
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        .section-title {
+            margin-bottom: 20px;
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 8px 0;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .bottom-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .bottom-nav .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .nav-item {
+            text-align: center;
+            color: #6c757d;
+            text-decoration: none;
+            padding: 8px;
+            flex: 1;
+            transition: color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: default;
+        }
+        .nav-item.active {
+            color: #667eea;
+        }
+        .nav-item:hover {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .nav-item.home:hover {
+            color: #667eea;
+            cursor: pointer;
+        }
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 3px;
+            display: block;
+        }
+        .nav-text {
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .logout-btn:hover {
+            background: #c53030;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 16px;
+            }
+            .profile-section {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            .profile-header {
+                padding: 20px;
+            }
+            .profile-img {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            .student-name {
+                font-size: 20px;
+            }
+            .nav-tabs .nav-link {
+                padding: 15px 5px;
+                font-size: 12px;
+            }
+            .tab-content {
+                padding: 20px;
+            }
+            .info-table td {
+                padding: 12px 15px;
+                font-size: 13px;
+            }
+            .info-table td:first-child {
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="header-left">
+                <img src="LoginCss/img/subhart-png.png" alt="Subharti" style="width: 40px; height: 40px;">
+                <h1>SUBHARTI UNIVERSITY</h1>
+            </div>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-info">
+                <div class="profile-img">AS</div>
+                <div>
+                    <h2 class="student-name">ARJUN SINGH</h2>
+                    <p class="student-details">E.No: SU2025080082S</p>
+                    <p class="student-details">Course: BACHELOR OF PHYSICAL EDUCATION</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-tabs" id="profileTabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#personal">Personal Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#address">Address Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#college">College Details</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="profileTabContent">
+            <!-- Personal Details Tab -->
+            <div class="tab-pane show active" id="personal">
+                <table class="info-table">
+                    <tr>
+                        <td>Admission No</td>
+                        <td>SU2025080082S</td>
+                    </tr>
+                    <tr>
+                        <td>Father's Name</td>
+                        <td>KRISHIPAL SINGH</td>
+                    </tr>
+                    <tr>
+                        <td>Mother's Name</td>
+                        <td>GEETA DEVI</td>
+                    </tr>
+                    <tr>
+                        <td>Enrollment No</td>
+                        <td>2209000000183</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td>Apr 23 2005</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No</td>
+                        <td>8869842180</td>
+                    </tr>
+                    <tr>
+                        <td>Caste Category</td>
+                        <td>OBC</td>
+                    </tr>
+                    <tr>
+                        <td>Religion</td>
+                        <td>HINDU</td>
+                    </tr>
+                    <tr>
+                        <td>Nationality</td>
+                        <td>Indian</td>
+                    </tr>
+                    <tr>
+                        <td>Aadhaar No.</td>
+                        <td>632115056000</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Address Details Tab -->
+            <div class="tab-pane" id="address">
+                <h5 class="section-title">Permanent Address</h5>
+                <table class="info-table">
+                    <tr>
+                        <td>Permanent Address</td>
+                        <td>ARYAPURI, BANAT,</td>
+                    </tr>
+                    <tr>
+                        <td>Pin Code</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Email Id</td>
+                        <td>ARJUN227776SINGH@GMAIL.COM</td>
+                    </tr>
+                    <tr>
+                        <td>Contact No.</td>
+                        <td>8869842180</td>
+                    </tr>
+                </table>
+
+                <h5 class="section-title" style="margin-top: 30px;">Local Address</h5>
+                <table class="info-table">
+                    <tr>
+                        <td>Local Address</td>
+                        <td>ARYAPURI, BANAT,</td>
+                    </tr>
+                    <tr>
+                        <td>Pin Code</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Email Id</td>
+                        <td>ARJUN227776SINGH@GMAIL.COM</td>
+                    </tr>
+                    <tr>
+                        <td>Contact No.</td>
+                        <td>8869842180</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- College Details Tab -->
+            <div class="tab-pane" id="college">
+                <table class="info-table">
+                    <tr>
+                        <td>College Name</td>
+                        <td>FACULTY OF EDUCATION</td>
+                    </tr>
+                    <tr>
+                        <td>Admission Session</td>
+                        <td>2025-2026</td>
+                    </tr>
+                    <tr>
+                        <td>Course</td>
+                        <td>BACHELOR OF PHYSICAL EDUCATION</td>
+                    </tr>
+                    <tr>
+                        <td>Specialization</td>
+                        <td>PHYSICAL EDUCATION</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Admission</td>
+                        <td>08/25/2025 00:00:00</td>
+                    </tr>
+                    <tr>
+                        <td>Year-Sem</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Batch</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="container">
+            <div class="row">
+                <a href="index.html" class="nav-item home" style="margin: 0 auto;">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-text">Home</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="LoginCss/js/jquery-1.9.1.min.js"></script>
+    <script src="LoginCss/js/bootstrap.min.js"></script>
+    <script>
+        // Simplified tab switching functionality
+        $(document).ready(function() {
+            // Show first tab content immediately
+            $('#personal').show().addClass('show active');
+            
+            $('.nav-tabs .nav-link').click(function (e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs and hide all content
+                $('.nav-tabs .nav-link').removeClass('active');
+                $('.tab-pane').hide().removeClass('show active');
+                
+                // Add active class to clicked tab
+                $(this).addClass('active');
+                
+                // Show target content
+                var target = $(this).attr('href');
+                $(target).show().addClass('show active');
+            });
+        });
+    </script>
+</body>
+</html>
